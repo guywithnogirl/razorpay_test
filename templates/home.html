@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Angappa College of Arts and Science — Coimbatore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,680;1,9..144,500&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#EEEFE2;
+    --paper-deep:#E4E6D4;
+    --ink:#231A18;
+    --ink-soft:#5B5148;
+    --maroon:#6E1F2B;
+    --maroon-deep:#4E141E;
+    --gold:#CC9A3D;
+    --green:#25402B;
+    --line: rgba(35,26,24,0.14);
+    --radius: 2px;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Fraunces', serif;
+    font-weight:560;
+    letter-spacing:-0.01em;
+    line-height:1.05;
+  }
+  .mono{font-family:'IBM Plex Mono', monospace; letter-spacing:0.02em;}
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--maroon);
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:""; width:22px; height:1px; background:var(--maroon);}
+  ::selection{background:var(--gold); color:var(--ink);}
+  :focus-visible{outline:2px solid var(--maroon); outline-offset:3px;}
+
+  /* ===== HEADER ===== */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(238,239,226,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:14px 32px; max-width:1180px; margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:12px;}
+  .brand-mark{
+    width:38px; height:38px; border-radius:50%;
+    border:1.5px solid var(--maroon);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Fraunces', serif; font-weight:680; font-size:15px;
+    color:var(--maroon);
+  }
+  .brand-text .name{font-family:'Fraunces', serif; font-size:16px; font-weight:560;}
+  .brand-text .sub{font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:0.1em; color:var(--ink-soft); text-transform:uppercase;}
+  nav ul{display:flex; gap:30px; list-style:none;}
+  nav a{font-size:14px; font-weight:500; position:relative; padding:4px 0;}
+  nav a::after{content:""; position:absolute; left:0; bottom:0; width:0; height:1px; background:var(--maroon); transition:width .25s ease;}
+  nav a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--maroon); color:var(--paper); padding:9px 18px;
+    font-size:13px; font-weight:500; border-radius:var(--radius);
+    white-space:nowrap;
+  }
+  .nav-cta:hover{background:var(--maroon-deep);}
+  .menu-btn{display:none; background:none; border:none; font-size:22px; color:var(--ink); cursor:pointer;}
+
+  /* ===== HERO ===== */
+  .hero{
+    position:relative; overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+  .hero-grid{
+    display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px;
+    padding:76px 32px 64px; max-width:1180px; margin:0 auto; align-items:center;
+  }
+  .seal{
+    width:132px; height:132px; border-radius:50%;
+    border:1.5px solid var(--maroon);
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    margin-bottom:28px; position:relative;
+    animation: spin-slow 40s linear infinite;
+  }
+  .seal::before{
+    content:""; position:absolute; inset:8px; border:1px dashed var(--gold); border-radius:50%;
+  }
+  .seal .yr{font-family:'Fraunces', serif; font-weight:680; font-size:26px; color:var(--maroon); animation: counter-spin 40s linear infinite;}
+  .seal .lbl{font-family:'IBM Plex Mono', monospace; font-size:9px; letter-spacing:0.12em; color:var(--ink-soft); animation: counter-spin 40s linear infinite;}
+  @keyframes spin-slow{ to{ transform:rotate(360deg); } }
+  @keyframes counter-spin{ to{ transform:rotate(-360deg); } }
+
+  .hero h1{font-size:clamp(38px, 5.2vw, 62px); margin-bottom:22px;}
+  .hero h1 em{font-style:italic; color:var(--maroon);}
+  .hero p.lede{font-size:18px; color:var(--ink-soft); max-width:46ch; margin-bottom:32px;}
+  .hero-actions{display:flex; gap:14px; flex-wrap:wrap;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:13px 24px; font-size:14px; font-weight:500; border-radius:var(--radius);
+    border:1.5px solid var(--ink);
+  }
+  .btn-primary{background:var(--maroon); border-color:var(--maroon); color:var(--paper);}
+  .btn-primary:hover{background:var(--maroon-deep); border-color:var(--maroon-deep);}
+  .btn-ghost:hover{background:var(--ink); color:var(--paper);}
+
+  .hero-quote{
+    border-left:2px solid var(--gold); padding-left:22px;
+    font-family:'Fraunces', serif; font-style:italic; font-size:19px; line-height:1.5;
+    color:var(--ink);
+  }
+  .hero-quote cite{
+    display:block; margin-top:14px; font-style:normal; font-family:'IBM Plex Mono', monospace;
+    font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:var(--ink-soft);
+  }
+  .hero-photo-frame{
+    aspect-ratio:4/5; background:linear-gradient(155deg, var(--green), #16241B);
+    border-radius:var(--radius); position:relative; overflow:hidden;
+    display:flex; align-items:flex-end; padding:22px;
+  }
+  .hero-photo-frame::before{
+    content:""; position:absolute; inset:0;
+    background-image: radial-gradient(circle at 30% 20%, rgba(212,161,61,0.18), transparent 55%);
+  }
+  .hero-photo-frame .tag{
+    background:rgba(238,239,226,0.94); color:var(--ink); padding:12px 16px; border-radius:var(--radius);
+    font-family:'IBM Plex Mono', monospace; font-size:12px; line-height:1.5; position:relative; z-index:2;
+  }
+
+  /* ===== MARQUEE NOTICE ===== */
+  .notice-strip{
+    background:var(--maroon); color:var(--paper); overflow:hidden; white-space:nowrap;
+    border-bottom:1px solid var(--line);
+  }
+  .notice-track{display:inline-flex; gap:56px; padding:10px 0; animation: scroll-left 32s linear infinite;}
+  .notice-track span{font-family:'IBM Plex Mono', monospace; font-size:12.5px; letter-spacing:0.02em;}
+  .notice-track span::before{content:"◆ "; color:var(--gold);}
+  @keyframes scroll-left{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ===== SECTIONS ===== */
+  section{padding:88px 0;}
+  .section-head{display:flex; justify-content:space-between; align-items:flex-end; gap:24px; margin-bottom:48px; flex-wrap:wrap;}
+  .section-head h2{font-size:clamp(28px,3.4vw,40px);}
+  .section-head p{color:var(--ink-soft); max-width:42ch;}
+
+  /* About */
+  .about-grid{display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:start;}
+  .about-grid p{margin-bottom:16px; color:var(--ink-soft);}
+  .about-grid p strong{color:var(--ink); font-weight:600;}
+  .stat-rail{display:grid; grid-template-columns:repeat(2,1fr); gap:1px; background:var(--line); border:1px solid var(--line); margin-top:28px;}
+  .stat-cell{background:var(--paper); padding:24px;}
+  .stat-cell .num{font-family:'IBM Plex Mono', monospace; font-size:30px; font-weight:500; color:var(--maroon);}
+  .stat-cell .lbl{font-size:12.5px; color:var(--ink-soft); margin-top:4px;}
+
+  /* Courses */
+  .courses{background:var(--paper-deep); border-top:1px solid var(--line); border-bottom:1px solid var(--line);}
+  .course-grid{display:grid; grid-template-columns:repeat(3, 1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .course-card{background:var(--paper-deep); padding:28px; transition:background .2s ease;}
+  .course-card:hover{background:var(--paper);}
+  .course-card .code{font-family:'IBM Plex Mono', monospace; font-size:11px; color:var(--gold); letter-spacing:0.08em;}
+  .course-card h3{font-size:19px; margin:10px 0 8px; font-weight:560;}
+  .course-card p{font-size:13.5px; color:var(--ink-soft);}
+
+  /* Chronicle / timeline */
+  .chronicle-list{border-top:1px solid var(--line);}
+  .chronicle-item{
+    display:grid; grid-template-columns:120px 1fr; gap:28px;
+    padding:22px 0; border-bottom:1px solid var(--line);
+  }
+  .chronicle-item .date{font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--maroon); padding-top:3px;}
+  .chronicle-item h4{font-size:17px; font-weight:560; margin-bottom:4px;}
+  .chronicle-item p{font-size:13.5px; color:var(--ink-soft);}
+
+  /* Facilities */
+  .facility-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:20px;}
+  .facility-card{
+    border:1px solid var(--line); padding:26px 20px; border-radius:var(--radius);
+    background:var(--paper);
+  }
+  .facility-card .ic{width:34px; height:34px; border:1.5px solid var(--maroon); border-radius:50%; margin-bottom:16px;}
+  .facility-card h4{font-size:15.5px; margin-bottom:6px; font-weight:560;}
+  .facility-card p{font-size:12.5px; color:var(--ink-soft);}
+
+  /* CTA band */
+  .cta-band{
+    background:var(--green); color:var(--paper);
+    padding:64px 0; text-align:center;
+  }
+  .cta-band h2{color:var(--paper); font-size:clamp(26px,3.6vw,38px); margin-bottom:14px;}
+  .cta-band p{color:rgba(238,239,226,0.72); margin-bottom:30px;}
+  .cta-band .btn-primary{background:var(--gold); border-color:var(--gold); color:var(--ink);}
+  .cta-band .btn-primary:hover{background:#B8863099; }
+
+  /* Footer */
+  footer{background:var(--ink); color:rgba(238,239,226,0.82); padding:64px 0 28px;}
+  .footer-grid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1.2fr; gap:40px; margin-bottom:48px;}
+  .footer-grid h5{font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--gold); margin-bottom:16px;}
+  .footer-grid ul{list-style:none;}
+  .footer-grid li{margin-bottom:9px; font-size:13.5px;}
+  .footer-grid a:hover{color:var(--paper);}
+  .footer-brand .name{font-family:'Fraunces', serif; font-size:20px; color:var(--paper); margin-bottom:10px;}
+  .footer-brand p{font-size:13px; max-width:32ch; color:rgba(238,239,226,0.6);}
+  .footer-bottom{
+    border-top:1px solid rgba(238,239,226,0.14); padding-top:22px;
+    display:flex; justify-content:space-between; font-size:12px; color:rgba(238,239,226,0.5);
+    flex-wrap:wrap; gap:10px;
+  }
+
+  [data-reveal]{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  [data-reveal].in{opacity:1; transform:none;}
+
+  @media (max-width: 860px){
+    nav, .nav-cta{display:none;}
+    .menu-btn{display:block;}
+    .hero-grid{grid-template-columns:1fr; padding-top:48px;}
+    .about-grid{grid-template-columns:1fr; gap:32px;}
+    .course-grid{grid-template-columns:1fr;}
+    .facility-grid{grid-template-columns:repeat(2,1fr);}
+    .footer-grid{grid-template-columns:1fr 1fr; gap:32px;}
+    .chronicle-item{grid-template-columns:90px 1fr; gap:16px;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .seal, .seal .yr, .seal .lbl, .notice-track{animation:none;}
+    [data-reveal]{opacity:1; transform:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">AC</div>
+      <div class="brand-text">
+        <div class="name">Angappa College</div>
+        <div class="sub">Arts &amp; Science · Coimbatore</div>
+      </div>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#chronicle">Campus Life</a></li>
+        <li><a href="#facilities">Facilities</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">Enquire for 2026–27</a>
+    <button class="menu-btn" aria-label="Menu">☰</button>
+  </div>
+</header>
+
+<div class="notice-strip">
+  <div class="notice-track">
+    <span>Admissions open for all UG / PG / PhD programmes, 2026–27</span>
+    <span>75% of the 2025–26 batch placed, top offer 3.36 LPA</span>
+    <span>Up to 100% fee concession available on enquiry</span>
+    <span>Affiliated to Bharathiar University, Tamil Nadu</span>
+    <span>Admissions open for all UG / PG / PhD programmes, 2026–27</span>
+    <span>75% of the 2025–26 batch placed, top offer 3.36 LPA</span>
+    <span>Up to 100% fee concession available on enquiry</span>
+    <span>Affiliated to Bharathiar University, Tamil Nadu</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="seal">
+        <div class="yr">1987</div>
+        <div class="lbl">EST · ACAS</div>
+      </div>
+      <h1>Discipline builds<br>the <em>good human being</em>.</h1>
+      <p class="lede">A co-educational arts and science college on the green outskirts of Coimbatore, affiliated to Bharathiar University — training students in Commerce, Computer Science and Management since 1987.</p>
+      <div class="hero-actions">
+        <a href="#academics" class="btn btn-primary">Find a course</a>
+        <a href="#contact" class="btn btn-ghost">Plan a visit</a>
+      </div>
+    </div>
+    <div>
+      <div class="hero-photo-frame">
+        <div class="tag">SEERAPALAYAM, MALUMICHAMPATTI<br>COIMBATORE – 641105, TAMIL NADU</div>
+      </div>
+      <div class="hero-quote" style="margin-top:22px;">
+        “The purpose of education is to make good human beings with skill and expertise. Enlightened human beings are created by teachers.”
+        <cite>— Dr. T.V. Angappan, Founder</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div data-reveal>
+        <div class="eyebrow">About the college</div>
+        <h2 style="margin-top:14px; font-size:clamp(26px,3vw,36px);">Built on a founder's word, run on a discipline that hasn't changed.</h2>
+      </div>
+      <div data-reveal>
+        <p><strong>Angappa College of Arts and Science</strong> was established in 1987 by the Angappa Educational Trust, founded by Dr. T.V. Angappan — an educationist who spent his career building institutions across Coimbatore in service of accessible education. The college has stayed affiliated to Bharathiar University since its founding.</p>
+        <p>The campus sits in a quiet, green setting on the outskirts of the city — space the college treats as part of the education itself, alongside a standing insistence on punctuality, regularity and academic rigour.</p>
+        <p>A resident faculty team runs undergraduate and postgraduate programmes across Commerce, Computer Science and Management, with placement support built into the final years of every course.</p>
+        <div class="stat-rail">
+          <div class="stat-cell"><div class="num">1987</div><div class="lbl">Founding year</div></div>
+          <div class="stat-cell"><div class="num">75%</div><div class="lbl">2025–26 batch placed</div></div>
+          <div class="stat-cell"><div class="num">3.36L</div><div class="lbl">Top offer (LPA), 2025–26</div></div>
+          <div class="stat-cell"><div class="num">9</div><div class="lbl">UG / PG programmes offered</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="courses" id="academics">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <h2>Academics</h2>
+      <p>Nine undergraduate and postgraduate programmes across Commerce, Computer Science and Management, each affiliated to Bharathiar University.</p>
+    </div>
+    <div class="course-grid" data-reveal>
+      <div class="course-card"><div class="code">UG · SCIENCE</div><h3>B.Sc Computer Science</h3><p>Core programming, systems and applied computing, with placement training built into the final year.</p></div>
+      <div class="course-card"><div class="code">UG · SCIENCE</div><h3>BCA — Computer Applications</h3><p>Application development and computing fundamentals for a software or IT-services career.</p></div>
+      <div class="course-card"><div class="code">UG · SCIENCE</div><h3>B.Sc Mathematics with CA</h3><p>Mathematics paired with computer applications, for analytical and technical roles alike.</p></div>
+      <div class="course-card"><div class="code">UG · COMMERCE</div><h3>B.Com</h3><p>The foundational commerce degree — accounting, taxation, and business fundamentals.</p></div>
+      <div class="course-card"><div class="code">UG · COMMERCE</div><h3>B.Com (Computer Applications)</h3><p>Commerce fundamentals combined with applied computing for finance-and-tech roles.</p></div>
+      <div class="course-card"><div class="code">UG · COMMERCE</div><h3>B.Com (Information Technology)</h3><p>Commerce with an IT specialisation, built for operations and business-technology work.</p></div>
+      <div class="course-card"><div class="code">UG · COMMERCE</div><h3>B.Com (Professional Accounting)</h3><p>A focused track in professional accounting practice and compliance.</p></div>
+      <div class="course-card"><div class="code">UG · MANAGEMENT</div><h3>BBA — Retail Marketing</h3><p>Business administration with a specialisation in retail marketing and management.</p></div>
+      <div class="course-card"><div class="code">PG</div><h3>M.Sc Computer Science &amp; M.Com</h3><p>Postgraduate tracks for students continuing in computing or commerce after their UG.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="chronicle">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <h2>From the campus calendar</h2>
+      <p>A running record of what's happened on campus this year — placements, drives, and the events that fill the academic calendar.</p>
+    </div>
+    <div class="chronicle-list" data-reveal>
+      <div class="chronicle-item">
+        <div class="date">APR 2026</div>
+        <div><h4>Summer Coaching Camp</h4><p>A two-week coaching camp ran from April 27 to May 14, alongside a yoga awareness programme for teaching staff.</p></div>
+      </div>
+      <div class="chronicle-item">
+        <div class="date">MAR 2026</div>
+        <div><h4>Placements — 75% of the batch placed</h4><p>Students placed with KSV Consultants, Solvers India, and as Technical Trainers, with the top offer reaching 3.36 LPA.</p></div>
+      </div>
+      <div class="chronicle-item">
+        <div class="date">MAR 2026</div>
+        <div><h4>Women's Day &amp; Government Laptop Distribution</h4><p>Women's Day was marked with Mrs. S. Sunitha as chief guest; a government laptop distribution drive followed shortly after.</p></div>
+      </div>
+      <div class="chronicle-item">
+        <div class="date">FEB 2026</div>
+        <div><h4>29th Annual Day</h4><p>The college's Annual Day function honoured sports achievers with Dr. Rajavel as chief guest.</p></div>
+      </div>
+      <div class="chronicle-item">
+        <div class="date">JAN 2026</div>
+        <div><h4>Pongal &amp; Voter Awareness Week</h4><p>Pongal celebrations ran alongside a democracy-and-voting awareness drive for students.</p></div>
+      </div>
+      <div class="chronicle-item">
+        <div class="date">AUG 2025</div>
+        <div><h4>24th Graduation Day</h4><p>The 24th convocation, with faculty honoured alongside the graduating class.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="courses" id="facilities">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <h2>On campus</h2>
+      <p>What's built into the everyday of a student at ACAS.</p>
+    </div>
+    <div class="facility-grid" data-reveal>
+      <div class="facility-card"><div class="ic"></div><h4>Green campus</h4><p>A landscaped, low-density campus on the outskirts of the city.</p></div>
+      <div class="facility-card"><div class="ic"></div><h4>Placement training</h4><p>Structured placement prep running through the final year of every programme.</p></div>
+      <div class="facility-card"><div class="ic"></div><h4>Clubs &amp; forums</h4><p>Student-run clubs covering road safety, environment, and career guidance.</p></div>
+      <div class="facility-card"><div class="ic"></div><h4>NSS &amp; outreach</h4><p>National Service Scheme camps, blood donation drives and community welfare programmes.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="cta-band">
+  <div class="wrap">
+    <h2>Admissions for 2026–27 are open.</h2>
+    <p>Fee concessions of up to 100% are available on enquiry — reach out before you decide.</p>
+    <a href="#contact" class="btn btn-primary">Start your enquiry</a>
+  </div>
+</div>
+
+<footer id="contact">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="name">Angappa College</div>
+        <p>Seerapalayam, Malumichampatti, Coimbatore – 641105, Tamil Nadu, India. Co-educational, affiliated to Bharathiar University.</p>
+      </div>
+      <div>
+        <h5>Quick links</h5>
+        <ul>
+          <li><a href="#about">About us</a></li>
+          <li><a href="#academics">Courses</a></li>
+          <li><a href="#facilities">Facilities</a></li>
+          <li><a href="#chronicle">Campus life</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Admissions</h5>
+        <ul>
+          <li><a href="#contact">Enquiry</a></li>
+          <li><a href="#contact">Placement</a></li>
+          <li><a href="#academics">IQAC</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Reach us</h5>
+        <ul>
+          <li>0422-2610005 / 2610007</li>
+          <li>Admissions: 7904329797</li>
+          <li>admission@angappacollege.ac.in</li>
+          <li>principal@angappacollege.ac.in</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Angappa College of Arts and Science. All rights reserved.</div>
+      <div>Seerapalayam, Malumichampatti, Coimbatore – 641105</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const revealEls = document.querySelectorAll('[data-reveal]');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.12});
+  revealEls.forEach(el=>io.observe(el));
+
+  const menuBtn = document.querySelector('.menu-btn');
+  const navEl = document.querySelector('nav');
+  menuBtn?.addEventListener('click', ()=>{
+    const open = navEl.style.display === 'block';
+    navEl.style.display = open ? 'none' : 'block';
+    if(!open){
+      navEl.style.position='absolute'; navEl.style.top='64px'; navEl.style.left='0'; navEl.style.right='0';
+      navEl.style.background='var(--paper)'; navEl.style.borderBottom='1px solid var(--line)'; navEl.style.padding='20px 32px';
+      navEl.querySelector('ul').style.flexDirection='column'; navEl.querySelector('ul').style.gap='16px';
+    }
+  });
+</script>
+
+</body>
+</html>
