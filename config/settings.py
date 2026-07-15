@@ -102,7 +102,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    "*"
+    "http://gg-myr.s3-website.eu-north-1.amazonaws.com"
 ]
 
 
