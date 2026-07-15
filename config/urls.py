@@ -20,7 +20,7 @@ from .views import home
 from .views import hello_api
 
 urlpatterns = [
-    path('', home, name='home'),
+    # path('', home, name='home'),
     path('api/hello/', hello_api, name='hello_api'),
     path('admin/', admin.site.urls),
 ]
